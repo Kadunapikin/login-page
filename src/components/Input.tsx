@@ -5,7 +5,7 @@ type InputProps = {
   type?: string;
   name: string;
   register: any;
-  error?: string;
+  error?: string | React.ReactNode;
 };
 
 const Input: React.FC<InputProps> = ({ label, type = "text", name, register, error }) => (
