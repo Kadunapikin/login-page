@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
-import { Link } from 'react-router-dom';
 
 const Login = () => {
   const {
@@ -23,14 +23,14 @@ const Login = () => {
           label="Email"
           name="email"
           type="email"
-          register={register("email", { required: "Email is required" })}
+          register={register}
           error={errors.email?.message as string}
-          />
+        />
         <Input
           label="Password"
           name="password"
           type="password"
-          register={register("password", { required: "Password is required" })}
+          register={register}
           error={errors.password?.message as string}
         />
         <div className="text-right mb-4">

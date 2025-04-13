@@ -5,7 +5,7 @@ type InputProps = {
   type?: string;
   name: string;
   register: any;
-  error?: string | React.ReactNode;
+  error?: string;
 };
 
 const Input: React.FC<InputProps> = ({ label, type = "text", name, register, error }) => (
@@ -16,7 +16,9 @@ const Input: React.FC<InputProps> = ({ label, type = "text", name, register, err
       type={type}
       className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
     />
-    {error && <p className="text-red-500 text-xs mt-1">{error}</p>}
+    {typeof error === 'string' && (
+      <p className="text-red-500 text-xs mt-1">{error}</p>
+    )}
   </div>
 );
 
