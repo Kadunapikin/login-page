@@ -2,6 +2,7 @@ import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import toast from 'react-hot-toast';
 
 const Login = () => {
   const {
@@ -12,6 +13,7 @@ const Login = () => {
 
   const onSubmit = (data: any) => {
     console.log("Login data:", data);
+    toast.success("Login successful!");
     // Perform login logic here
   };
 

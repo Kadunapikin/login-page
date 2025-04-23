@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import toast from 'react-hot-toast';
 
 const PasswordRecovery = () => {
   const {
@@ -11,6 +12,7 @@ const PasswordRecovery = () => {
 
   const onSubmit = (data: any) => {
     console.log("Recovering for:", data);
+    toast.success("Recovery email sent!");
     // Trigger recovery email logic
   };
 
@@ -22,7 +24,7 @@ const PasswordRecovery = () => {
           label="Email"
           name="email"
           type="email"
-          register={register("email", { required: "Email is required" })}
+          register={register}
           error={errors.email?.message as string}
         />
         <Button type="submit">Send Recovery Email</Button>
