@@ -21,11 +21,6 @@ const PasswordRecovery = () => {
       toast.error(error.message || "Failed to send recovery email");
     }
   };
-  // const onSubmit = (data: any) => {
-  //   console.log("Recovering for:", data);
-  //   toast.success("Recovery email sent!");
-  //   // Trigger recovery email logic
-  // };
 
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">

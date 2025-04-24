@@ -24,11 +24,6 @@ const Login = () => {
       toast.error(error.message || "Login failed");
     }
   };
-  // const onSubmit = (data: any) => {
-  //   console.log("Login data:", data);
-  //   toast.success("Login successful!");
-  //   // Perform login logic here
-  // };
 
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
