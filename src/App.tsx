@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import PasswordRecovery from './pages/PasswordRecovery';
 import { Toaster } from 'react-hot-toast';
 import Signup from './pages/Signup';
+import Home from './pages/Home';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/recover" element={<PasswordRecovery />} />
       </Routes>
       <Toaster position='top-right' reverseOrder={false} />
