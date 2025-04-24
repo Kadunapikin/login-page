@@ -50,6 +50,12 @@ const Login = () => {
         </div>
         <Button type="submit">Login</Button>
       </form>
+      <div className="text-sm text-center mt-6">
+      Don't have an account?{' '}
+      <Link to="/signup" className="text-blue-600 hover:underline">
+        Sign up here
+      </Link>
+      </div>
     </div>
   );
 };
