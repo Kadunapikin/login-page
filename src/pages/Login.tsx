@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import toast from 'react-hot-toast';
@@ -13,18 +13,19 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const onSubmit = async (data: any) => {
     const { email, password } = data;
   
     try {
       await signInWithEmailAndPassword(auth, email, password);
       toast.success("Login successful!");
+      navigate('/home');
     } catch (error: any) {
-      console.error("Login error:", error.message);
       toast.error(error.message || "Login failed");
     }
   };
-
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
       <h2 className="text-2xl font-bold mb-6">Login</h2>
