@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Input from '../components/Input';
 import Button from '../components/Button';
 import toast from 'react-hot-toast';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const Login = () => {
   const {
@@ -11,11 +13,22 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log("Login data:", data);
-    toast.success("Login successful!");
-    // Perform login logic here
+  const onSubmit = async (data: any) => {
+    const { email, password } = data;
+  
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      toast.success("Login successful!");
+    } catch (error: any) {
+      console.error("Login error:", error.message);
+      toast.error(error.message || "Login failed");
+    }
   };
+  // const onSubmit = (data: any) => {
+  //   console.log("Login data:", data);
+  //   toast.success("Login successful!");
+  //   // Perform login logic here
+  // };
 
   return (
     <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
