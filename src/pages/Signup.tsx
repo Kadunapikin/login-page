@@ -48,7 +48,7 @@ const Signup = () => {
         />
         <div className="text-right mb-4">
           <Link to="/" className="text-sm text-blue-600 hover:underline">
-            Already have an account? Login
+            Already have an account? SignIn
           </Link>
         </div>
         <Button type="submit">Sign Up</Button>
