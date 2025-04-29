@@ -6,25 +6,16 @@ A full-stack authentication app built with **React**, featuring email/password l
 
 ## 🚀 Features
 
-- 📥 **User Authentication**
-  - Signup, login, and password recovery using Firebase
-- 🧠 **AI Lesson Plan Generator**
-  - Teachers input subject, topic, class level, and duration
-  - App generates a structured lesson plan (AI API-ready)
-- ✅ **Form Validation**
-  - Built-in error handling with react-hook-form
-- 🔐 **Route Protection**
-  - Home page is accessible only to logged-in users
-- 🍞 **Toast Notifications**
-  - Real-time feedback on login, logout, signup, and errors
-- 📱 **Responsive Navbar**
-  - Mobile-friendly hamburger menu with conditional buttons
-- 💅 **Tailwind CSS Styling**
-  - Clean, responsive UI out of the box
-- 📲 **Progressive Web App Ready**
-  - Installable app experience on mobile devices
+- 📥 Login form with email & password
+- 🔁 Password recovery form
+- ✅ Input validation with error feedback
+- 🔄 React Router integration
+- 💅 Tailwind CSS styling
+- ♻️ Reusable components
+- 🤖 AI-generated lesson plans based on user input
+- 🔐 Protected routes with authentication checks
+- 🔔 Toast notifications for user feedback
 
----
 
 ## 📦 Tech Stack
 
@@ -36,6 +27,7 @@ A full-stack authentication app built with **React**, featuring email/password l
 - [Firebase Auth](https://firebase.google.com/products/auth)
 - [Vite](https://vitejs.dev/)
 - [React Hot Toast](https://react-hot-toast.com/)
+- [OpenAI API](https://platform.openai.com/docs/introduction)
 
 
 ## 🔧 Getting Started
@@ -85,6 +77,12 @@ src/
 🍞 Toast feedback for all actions
 
 📱 Responsive navbar for mobile
+
+🧠 Implement AI-generated lesson plans
+
+
+✅ To Do Next
+ Enhance lesson plan formatting and export options
 
 
 📄 License
