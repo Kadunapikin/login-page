@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
 import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
 
 const Signup = () => {
   const {
@@ -29,31 +30,34 @@ const Signup = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Create an Account</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Email"
-          name="email"
-          type="email"
-          register={register}
-          error={errors.email?.message as string}
-        />
-        <Input
-          label="Password"
-          name="password"
-          type="password"
-          register={register}
-          error={errors.password?.message as string}
-        />
-        <div className="text-right mb-4">
-          <Link to="/" className="text-sm text-blue-600 hover:underline">
-            Already have an account? SignIn
-          </Link>
-        </div>
-        <Button type="submit">Sign Up</Button>
-      </form>
-    </div>
+    <>
+      <Navbar />
+      <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
+        <h2 className="text-2xl font-bold mb-6">Create an Account</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            register={register}
+            error={errors.email?.message as string}
+          />
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            register={register}
+            error={errors.password?.message as string}
+          />
+          <div className="text-right mb-4">
+            <Link to="/" className="text-sm text-blue-600 hover:underline">
+              Already have an account? SignIn
+            </Link>
+          </div>
+          <Button type="submit">Sign Up</Button>
+        </form>
+      </div>
+    </>
   );
 };
 

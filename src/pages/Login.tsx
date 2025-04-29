@@ -5,6 +5,7 @@ import Button from '../components/Button';
 import toast from 'react-hot-toast';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../firebase';
+import Navbar from '../components/Navbar';
 
 const Login = () => {
   const {
@@ -27,37 +28,40 @@ const Login = () => {
     }
   };
   return (
-    <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
-      <h2 className="text-2xl font-bold mb-6">Login</h2>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Input
-          label="Email"
-          name="email"
-          type="email"
-          register={register}
-          error={errors.email?.message as string}
-        />
-        <Input
-          label="Password"
-          name="password"
-          type="password"
-          register={register}
-          error={errors.password?.message as string}
-        />
-        <div className="text-right mb-4">
-          <Link to="/recover" className="text-sm text-blue-600 hover:underline">
-            Forgot Password?
-          </Link>
+    <>
+      <Navbar />
+      <div className="max-w-md mx-auto mt-20 p-6 border rounded shadow-md">
+        <h2 className="text-2xl font-bold mb-6">Login</h2>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Input
+            label="Email"
+            name="email"
+            type="email"
+            register={register}
+            error={errors.email?.message as string}
+          />
+          <Input
+            label="Password"
+            name="password"
+            type="password"
+            register={register}
+            error={errors.password?.message as string}
+          />
+          <div className="text-right mb-4">
+            <Link to="/recover" className="text-sm text-blue-600 hover:underline">
+              Forgot Password?
+            </Link>
+          </div>
+          <Button type="submit">Login</Button>
+        </form>
+        <div className="text-sm text-center mt-6">
+        Don't have an account?{' '}
+        <Link to="/signup" className="text-blue-600 hover:underline">
+          Sign up here
+        </Link>
         </div>
-        <Button type="submit">Login</Button>
-      </form>
-      <div className="text-sm text-center mt-6">
-      Don't have an account?{' '}
-      <Link to="/signup" className="text-blue-600 hover:underline">
-        Sign up here
-      </Link>
       </div>
-    </div>
+    </>
   );
 };
 
