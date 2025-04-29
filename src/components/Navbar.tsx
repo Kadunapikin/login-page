@@ -1,13 +1,21 @@
-// src/components/Navbar.tsx
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { signOut, onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../firebase';
 import toast from 'react-hot-toast';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState<User | null>(null);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      setUser(firebaseUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -59,32 +67,52 @@ const Navbar = () => {
           <Link to="/home" className="text-gray-700 hover:text-blue-600">
             Home
           </Link>
-          <button
-            onClick={handleLogout}
-            className="text-gray-700 hover:text-red-600"
-          >
-            Logout
-          </button>
+          {!user ? (
+            <>
+              <Link to="/" className="text-gray-700 hover:text-blue-600">
+                Login
+              </Link>
+              <Link to="/signup" className="text-gray-700 hover:text-blue-600">
+                Signup
+              </Link>
+            </>
+          ) : (
+            <button
+              onClick={handleLogout}
+              className="text-gray-700 hover:text-red-600"
+            >
+              Logout
+            </button>
+          )}
         </div>
       </div>
+
+      {/* Mobile Menu */}
       {isOpen && (
         <div className="md:hidden mt-2 space-y-2">
-          <Link
-            to="/home"
-            className="block text-gray-700 hover:text-blue-600"
-            onClick={() => setIsOpen(false)}
-          >
+          <Link to="/home" className="block text-gray-700" onClick={() => setIsOpen(false)}>
             Home
           </Link>
-          <button
-            onClick={() => {
-              setIsOpen(false);
-              handleLogout();
-            }}
-            className="block text-gray-700 hover:text-red-600"
-          >
-            Logout
-          </button>
+          {!user ? (
+            <>
+              <Link to="/" className="block text-gray-700" onClick={() => setIsOpen(false)}>
+                Login
+              </Link>
+              <Link to="/signup" className="block text-gray-700" onClick={() => setIsOpen(false)}>
+                Signup
+              </Link>
+            </>
+          ) : (
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                handleLogout();
+              }}
+              className="block text-gray-700 hover:text-red-600"
+            >
+              Logout
+            </button>
+          )}
         </div>
       )}
     </nav>
@@ -92,5 +120,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-// This code defines a Navbar component for a web application. It includes links to the home page and a logout button. The navbar is responsive, showing a hamburger menu on smaller screens. When the logout button is clicked, it signs the user out of Firebase authentication and navigates them back to the login page.
-// The component uses React hooks for state management and Firebase authentication methods. It also includes toast notifications for user feedback on actions like logout.
